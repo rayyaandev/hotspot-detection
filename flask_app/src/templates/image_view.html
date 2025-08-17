@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ image_name }} - Image View</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .main-container {
+        /* display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh; */
+      }
+
+      .main-image {
+        position: relative;
+        width: 800px;
+        height: 600px;
+      }
+
+      .hotspot {
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid black;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      .hotspot:hover {
+        border: 1px solid red;
+      }
+
+      .hotspot-details {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <img
+        src="{{ url_for('serve_image', filename=image_name) }}"
+        alt="{{ image_name }}"
+        class="main-image"
+      />
+      {% for hotspot in image_hotspots %}
+      <div
+        class="hotspot"
+        style="left: {{ hotspot.x }}px; top: {{ hotspot.y }}px;"
+        onclick="handleHotspotClick('{{ hotspot.id }}', '{{ image_id }}')"
+      ></div>
+      {% endfor %}
+    </div>
+
+    <script>
+      function handleHotspotClick(id, image_id) {
+        // fetch hotspot data
+        fetch(`/hotspots/${image_id}/${id}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // display data in a separate div in a pre tag
+
+            if (document.getElementById("hotspot-details")) {
+              document.getElementById("hotspot-details").remove();
+            }
+
+            const hotspotDetails = document.createElement("div");
+            hotspotDetails.classList.add("hotspot-details");
+            hotspotDetails.setAttribute("id", "hotspot-details");
+            hotspotDetails.innerHTML = `
+              <h2>${data.label}</h2>
+              <pre>${JSON.stringify(data, null, 2)}</pre>
+            `;
+            document.body.appendChild(hotspotDetails);
+          });
+      }
+    </script>
+  </body>
+</html>

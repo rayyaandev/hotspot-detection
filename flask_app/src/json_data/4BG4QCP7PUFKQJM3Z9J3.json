@@ -1,0 +1,51 @@
+{
+    "diagram_id": "4BG4QCP7PUFKQJM3Z9J3",
+    "image_filename": "4BG4QCP7PUFKQJM3Z9J3.jpg",
+    "make": "ferrari",
+    "hotspots": [
+        {
+            "id": "2",
+            "label": "2",
+            "position": {
+                "x": "0.548253",
+                "y": "0.429873"
+            },
+            "parts": [
+                "64782800"
+            ]
+        },
+        {
+            "id": "4",
+            "label": "4",
+            "position": {
+                "x": "0.633205",
+                "y": "0.791456"
+            },
+            "parts": [
+                "332100061"
+            ]
+        },
+        {
+            "id": "4",
+            "label": "4",
+            "position": {
+                "x": "0.873708",
+                "y": "0.456979"
+            },
+            "parts": [
+                "332100061"
+            ]
+        },
+        {
+            "id": "3",
+            "label": "3",
+            "position": {
+                "x": "0.30108",
+                "y": "0.773919"
+            },
+            "parts": [
+                "64923800"
+            ]
+        }
+    ]
+}
