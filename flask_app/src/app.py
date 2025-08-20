@@ -10,7 +10,7 @@ IMAGES_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images
 HOTSPOTS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'json_data')
 
 # Pre-load csv file
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'parts_data.csv'), 'r') as file:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'utils', 'parts_data.csv'), 'r') as file:
     reader = csv.DictReader(file)
     csv_parts = [row for row in reader]
 
